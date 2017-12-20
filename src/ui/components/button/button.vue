@@ -6,8 +6,8 @@
     </button>
 </template>
 <script>
-  import Icon from '../icon';
-  import { oneOf } from '../../utils/assist';
+  import Icon from '../icon'
+  import { oneOf } from '../../utils/assist'
 
   const prefixCls = 'ivu-btn'
 
@@ -15,6 +15,7 @@
     name: 'Button',
     components: {Icon},
     props: {
+      // type的类型为primary等
       type: {
         validator (value) {
           return oneOf(value, ['primary', 'ghost', 'dashed', 'text', 'info', 'success', 'warning', 'error', 'default'])
@@ -38,6 +39,7 @@
           return oneOf(value, ['button', 'submit', 'reset'])
         }
       },
+      // 小图标
       icon: String,
       long: {
         type: Boolean,
@@ -66,6 +68,7 @@
     },
     methods: {
       handleClick (event) {
+        // 父组件在按钮上定义了click方法
         this.$emit('click', event)
       }
     },

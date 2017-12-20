@@ -12,29 +12,36 @@
   export default {
     name: 'iForm',
     props: {
+      // 要校验的字段
       model: {
         type: Object
       },
+      // 校验规则
       rules: {
         type: Object
       },
+      // label长度
       labelWidth: {
         type: Number
       },
+      // label的位置
       labelPosition: {
         validator (value) {
           return oneOf(value, ['left', 'right', 'top'])
         },
         default: 'right'
       },
+      // 同行
       inline: {
         type: Boolean,
         default: false
       },
+      // 是否显示错误信息
       showMessage: {
         type: Boolean,
         default: true
       },
+      // 自动完成
       autocomplete: {
         validator (value) {
           return oneOf(value, ['on', 'off'])
@@ -64,6 +71,7 @@
           field.resetField()
         })
       },
+      // 这个在父组件中调用
       validate (callback) {
         return new Promise(resolve => {
           let valid = true
@@ -86,7 +94,7 @@
       },
       validateField (prop, cb) {
         const field = this.fields.filter(field => field.prop === prop)[0]
-        if (!field) { throw new Error('[iView warn]: must call validateField with valid prop string!')}
+        if (!field) { throw new Error('[iView warn]: must call validateField with valid prop string!') }
 
         field.validate('', cb)
       }
@@ -96,6 +104,7 @@
         this.validate()
       }
     },
+    // 绑定事件
     created () {
       this.$on('on-form-item-add', (field) => {
         if (field) this.fields.push(field)

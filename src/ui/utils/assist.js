@@ -1,6 +1,6 @@
 import Vue from 'vue'
 const isServer = Vue.prototype.$isServer
-// 判断参数是否是其中之一
+// 判断参数是否是其中之一，相当于php中的in_array
 export function oneOf (value, validList) {
   for (let i = 0; i < validList.length; i++) {
     if (value === validList[i]) {

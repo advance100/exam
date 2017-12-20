@@ -1,6 +1,7 @@
 <template>
     <div :class="classes">
-        <label :class="[prefixCls + '-label']" :for="labelFor" :style="labelStyles" v-if="label || $slots.label">
+        <!-- 当父组件中调用时，指定了label -->
+        <label v-if="label || $slots.label" :class="[prefixCls + '-label']" :for="labelFor" :style="labelStyles">
             <slot name="label">{{ label }}</slot>
         </label>
         <div :class="[prefixCls + '-content']" :style="contentStyles">
@@ -118,7 +119,7 @@
         cache: false,
         get () {
           const model = this.form.model
-          if (!model || !this.prop) { return; }
+          if (!model || !this.prop) { return }
 
           let path = this.prop
           if (path.indexOf(':') !== -1) {
@@ -224,6 +225,7 @@
         this.validate('change')
       }
     },
+    // 将当前item加到form中的fields
     mounted () {
       if (this.prop) {
         this.dispatch('iForm', 'on-form-item-add', this)

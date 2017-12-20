@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
-        <h1>后台管理系统</h1>
+        <div class='logo'></div>
+        <h1>学霸后台管理系统</h1>
         <div class="login">
             <i-form ref="formInline" :model="formInline" :rules="ruleInline">
                 <Form-item prop="user">
@@ -10,15 +11,15 @@
                     <Input v-model="formInline.password" type="password"></Input>
                 </Form-item>
                 <Form-item>
-                    <i-button type="success" @click.native="handleSubmit('formInline')" long>登录</i-button>
+                    <i-button icon="bonfire" type="success" shape="circle-outline" @click.native="handleSubmit('formInline')" long>登录后台</i-button>
                 </Form-item>
             </i-form>
         </div>
     </div>
 </template>
 <script>
-  import Form from '../../ui/components/form'
-  import FormItem from '../../ui/components/form-item'
+  import Form from '#/form'
+  import FormItem from '#/form-item'
   import Button from '#/button'
   export default {
     components: {
@@ -52,6 +53,7 @@
       }
     },
     methods: {
+      // 提交表单
       handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
@@ -71,16 +73,19 @@
 
 
 <style scoped>
+    .logo{
+        border:2px solid #f00;
+    }
 
     .wrapper {
         position: relative;
         width: 100%;
         height: 100%;
-        padding-top: 150px;
+        /* padding-top: 150px; */
         padding-bottom: 200px;
-        /*background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));*/
-        /*background: #fff;*/
-        /*url(http://78rbeb.com1.z0.glb.clouddn.com/wp-content/uploads/2014/03/free-blurred-web-backgrounds-04.jpg);*/
+        background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));
+        background: #fff;
+        background-image:url(http://78rbeb.com1.z0.glb.clouddn.com/wp-content/uploads/2014/03/free-blurred-web-backgrounds-04.jpg);
     }
 
     .wrapper > h1 {
