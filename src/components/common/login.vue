@@ -17,7 +17,15 @@
     </div>
 </template>
 <script>
+  import Form from '../../ui/components/form'
+  import FormItem from '../../ui/components/form-item'
+  import Button from '#/button'
   export default {
+    components: {
+      'i-form': Form,
+      'Form-item': FormItem,
+      'i-button': Button
+    },
     data () {
       return {
         formInline: {
@@ -74,12 +82,14 @@
         /*background: #fff;*/
         /*url(http://78rbeb.com1.z0.glb.clouddn.com/wp-content/uploads/2014/03/free-blurred-web-backgrounds-04.jpg);*/
     }
-    .wrapper > h1{
+
+    .wrapper > h1 {
         text-align: center;
         vertical-align: middle;
         margin-bottom: 20px;
         color: #000;
     }
+
     .login {
         margin: 0 auto;
         padding: 200px auto;
